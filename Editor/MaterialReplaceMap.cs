@@ -10,7 +10,7 @@ namespace KRT.MaterialReplacer
     [CreateAssetMenu(fileName = "MaterialReplaceMap", menuName = "MaterialReplacer/Material Replace Map")]
     public class MaterialReplaceMap : ScriptableObject, ISerializationCallbackReceiver
     {
-        private Dictionary<Material, Material> m_Materials;
+        private Dictionary<Material, Material> m_Materials = new Dictionary<Material, Material>();
 
         [SerializeField]
         private SerializablePair[] m_SerializedMaterials;
