@@ -36,6 +36,29 @@ namespace KRT.MaterialReplacer
 
         private void OnGUI()
         {
+            if (MaterialReplacer.latestVersion != null && MaterialReplacer.latestVersion > new SemVer(MaterialReplacer.Version))
+            {
+                using (var box = new EditorGUILayout.VerticalScope(GUI.skin.box))
+                {
+                    var color = GUI.contentColor;
+                    GUI.contentColor = Color.red;
+                    EditorGUILayout.LabelField($"Update: {MaterialReplacer.Version} -> {MaterialReplacer.latestVersion}", EditorStyles.boldLabel);
+                    GUI.contentColor = color;
+                    using (var horizontal = new EditorGUILayout.HorizontalScope())
+                    {
+                        if (GUILayout.Button("Booth"))
+                        {
+                            Application.OpenURL(MaterialReplacer.BoothURL);
+                        }
+                        if (GUILayout.Button("GitHub"))
+                        {
+                            Application.OpenURL(MaterialReplacer.GitHubURL);
+                        }
+                    }
+                }
+                EditorGUILayout.Space();
+            }
+
             targetObject = (GameObject)EditorGUILayout.ObjectField("Game Object", targetObject, typeof(GameObject), true);
             materialReplaceMap = (MaterialReplaceMap)EditorGUILayout.ObjectField("Material Replace Map", materialReplaceMap, typeof(MaterialReplaceMap), false);
 

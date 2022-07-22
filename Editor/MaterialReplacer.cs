@@ -18,6 +18,16 @@ namespace KRT.MaterialReplacer
         public static readonly string Version = "0.0.0";
 
         /// <summary>
+        /// URL for booth.pm.
+        /// </summary>
+        internal const string BoothURL = "https://example.com";
+
+        /// <summary>
+        /// URL for GitHub.
+        /// </summary>
+        internal const string GitHubURL = "https://github.com/" + Repository;
+
+        /// <summary>
         /// Internal logger.
         /// </summary>
         internal static readonly ILogger Logger = new Logger(new LogHandler());
@@ -25,7 +35,7 @@ namespace KRT.MaterialReplacer
         /// <summary>
         /// Latest release info.
         /// </summary>
-        internal static GitHubRelease latestRelease = null;
+        internal static SemVer latestVersion = null;
 
         private const string PackageJsonGUID = "1560de9bb4191fa478b78a2d79be403a";
 
@@ -50,12 +60,17 @@ namespace KRT.MaterialReplacer
             {
                 try
                 {
-                    latestRelease = await GetLatestRelease();
+                    var release = await GetLatestRelease();
+                    if (release != null)
+                    {
+                        latestVersion = release.Version;
+                    }
+                    latestVersion = new SemVer("1.0.0");
                 }
                 catch (Exception e)
                 {
                     Logger.LogException(e);
-                    latestRelease = null;
+                    latestVersion = null;
                 }
             });
         }
