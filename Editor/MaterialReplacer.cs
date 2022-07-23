@@ -20,7 +20,7 @@ namespace KRT.MaterialReplacer
         /// <summary>
         /// URL for booth.pm.
         /// </summary>
-        internal const string BoothURL = "https://example.com";
+        internal const string BoothURL = "https://kurotu.booth.pm/items/4023240";
 
         /// <summary>
         /// URL for GitHub.

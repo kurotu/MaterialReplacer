@@ -1,5 +1,9 @@
 # Material Replacer
 
+<a href="https://kurotu.booth.pm/items/4023240">
+  <img alt="Booth" src="https://asset.booth.pm/static-images/banner/200x40_01.png">
+</a>
+
 <a href="https://github.com/kurotu/MaterialReplacer/releases/latest">
   <img alt="Release" src="https://img.shields.io/github/v/release/kurotu/MaterialReplacer">
 </a>
