@@ -35,7 +35,7 @@ namespace KRT.MaterialReplacer
         /// <summary>
         /// Latest release info.
         /// </summary>
-        internal static SemVer latestVersion = null;
+        internal static GitHubRelease latestRelease = null;
 
         private const string PackageJsonGUID = "1560de9bb4191fa478b78a2d79be403a";
 
@@ -60,21 +60,39 @@ namespace KRT.MaterialReplacer
             {
                 try
                 {
-                    var release = await GetLatestRelease();
-                    if (release != null)
+                    latestRelease = await GetLatestRelease();
+                    if (latestRelease != null && latestRelease.Version >= new SemVer(Version))
                     {
-                        latestVersion = release.Version;
+                        Logger.LogWarning(Tag, $"New Version {latestRelease.Version} is available.");
                     }
                 }
                 catch (Exception e)
                 {
                     Logger.LogException(e);
-                    latestVersion = null;
+                    latestRelease = null;
                 }
             });
         }
 
         private static string AssetRoot => Path.GetDirectoryName(AssetDatabase.GUIDToAssetPath(PackageJsonGUID));
+
+        /// <summary>
+        /// Gets whether update should be notified to user.
+        /// </summary>
+        /// <returns>true to show notification.</returns>
+        internal static bool ShouldNotifyUpdate()
+        {
+            if (latestRelease == null)
+            {
+                return false;
+            }
+            if (latestRelease.Version <= new SemVer(Version))
+            {
+                return false;
+            }
+            var span = DateTime.UtcNow - latestRelease.PublishedDateTime;
+            return span.TotalDays > 1;
+        }
 
         private static void Export()
         {

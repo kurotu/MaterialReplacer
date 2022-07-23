@@ -23,13 +23,13 @@ namespace KRT.MaterialReplacer
         /// <inheritdoc/>
         public override void OnInspectorGUI()
         {
-            if (MaterialReplacer.latestVersion != null && MaterialReplacer.latestVersion > new SemVer(MaterialReplacer.Version))
+            if (MaterialReplacer.ShouldNotifyUpdate())
             {
                 using (var box = new EditorGUILayout.VerticalScope(GUI.skin.box))
                 {
                     var color = GUI.contentColor;
                     GUI.contentColor = Color.red;
-                    EditorGUILayout.LabelField($"Update: {MaterialReplacer.Version} -> {MaterialReplacer.latestVersion}", EditorStyles.boldLabel);
+                    EditorGUILayout.LabelField($"Update: {MaterialReplacer.Version} -> {MaterialReplacer.latestRelease.Version}", EditorStyles.boldLabel);
                     GUI.contentColor = color;
                     using (var horizontal = new EditorGUILayout.HorizontalScope())
                     {
