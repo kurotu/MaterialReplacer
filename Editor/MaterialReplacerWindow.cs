@@ -64,25 +64,23 @@ namespace KRT.MaterialReplacer
 
             if (targetObject && materialReplaceMap)
             {
-                using (var box = new EditorGUILayout.VerticalScope(GUI.skin.box))
+                var targetMaterials = targetObject.GetComponentsInChildren<Renderer>(true)
+                    .SelectMany(r => r.sharedMaterials)
+                    .Where(m => m != null)
+                    .Distinct()
+                    .ToArray();
+                materialReplaceMap.GetPairs(replaces);
+                var show = replaces.Where(pair => targetMaterials.Contains(pair.Key) && pair.Value != null).ToArray();
+                if (show.Length > 0)
                 {
-                    var targetMaterials = targetObject.GetComponentsInChildren<Renderer>(true)
-                        .SelectMany(r => r.sharedMaterials)
-                        .Where(m => m != null)
-                        .Distinct()
-                        .ToArray();
-                    materialReplaceMap.GetPairs(replaces);
-                    foreach (var pair in replaces)
+                    EditorGUILayout.Space();
+                    using (var box = new EditorGUILayout.VerticalScope(GUI.skin.box))
                     {
-                        if (!targetMaterials.Contains(pair.Key))
+                        EditorGUILayout.LabelField("Materials will be replaced:", EditorStyles.boldLabel);
+                        foreach (var pair in show)
                         {
-                            continue;
+                            GUILayout.Label($"- {pair.Key.name} -> {pair.Value.name}");
                         }
-                        if (pair.Value == null)
-                        {
-                            continue;
-                        }
-                        GUILayout.Label($"{pair.Key.name} => {pair.Value.name}");
                     }
                 }
             }

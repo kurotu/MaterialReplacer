@@ -61,9 +61,10 @@ namespace KRT.MaterialReplacer
             {
                 using (var box = new EditorGUILayout.VerticalScope(GUI.skin.box))
                 {
+                    EditorGUILayout.LabelField("Materials in all renderers:", EditorStyles.boldLabel);
                     foreach (var material in GetMaterials(referenceObject))
                     {
-                        if (GUILayout.Button(material.name, GUI.skin.label))
+                        if (GUILayout.Button($"- {material.name}", GUI.skin.label))
                         {
                             EditorGUIUtility.PingObject(material);
                         }
@@ -140,6 +141,7 @@ namespace KRT.MaterialReplacer
                 pair.FindPropertyRelative(PROPERTY_ORIGINAL).objectReferenceValue = refMats[i];
                 pair.FindPropertyRelative(PROPERTY_REPLACED).objectReferenceValue = null;
             }
+            referenceObject = null;
         }
 
         private bool HasCopiedOriginal()
