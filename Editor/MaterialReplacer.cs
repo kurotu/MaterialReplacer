@@ -65,7 +65,6 @@ namespace KRT.MaterialReplacer
                     {
                         latestVersion = release.Version;
                     }
-                    latestVersion = new SemVer("1.0.0");
                 }
                 catch (Exception e)
                 {
