@@ -104,7 +104,7 @@ jobs:
           cp MaterialReplacer.unitypackage ${NAME}/${NAME}.unitypackage
           cp LICENSE.txt ${NAME}/
           cp README.md ${NAME}/
-          cp README.txt ${NAME}/
+          cp README_JP.md ${NAME}/
           zip -r ${NAME}.zip ${NAME}
           echo "::set-output name=artifact-name::${NAME}"
 
