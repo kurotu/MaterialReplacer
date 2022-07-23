@@ -10,12 +10,17 @@ Unity editor extension to replace materials at once by defining replacement rule
 
 This extension is designed for services such as VRChat, but it's usable for any purpose.
 
-## Install
+## Support
 
-There are two options to install the package.
+Verified Unity versions
+- Unity 2019.4.31f1
+
+## Setup
+
+There are two options to import the package into your project.
 
 - Download the latest `.unitypackage` from [the release page](https://github.com/kurotu/MaterialReplacer/releases/latest) or [Booth]().
-- Import `https://github.com/kurotu/MaterialReplacer.git` from UPM.
+- Add `https://github.com/kurotu/MaterialReplacer.git` from UPM.
 
 ## Usage
 

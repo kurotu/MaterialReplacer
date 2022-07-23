@@ -10,9 +10,14 @@
 
 VRChat などのサービスでの使用を想定して作成していますが、自由に使用できます。
 
-## インストール
+## 対応状況
 
-以下のいずれかの方法でインストールします。
+動作確認環境
+- Unity 2019.4.31f1
+
+## セットアップ
+
+以下のいずれかの方法でプロジェクトにインポートします。
 
 - 最新の `.unitypackage` を[リリースページ](https://github.com/kurotu/MaterialReplacer/releases/latest)または [Booth]() からダウンロードしてインポート
 - UPM で `https://github.com/kurotu/MaterialReplacer.git` を追加
