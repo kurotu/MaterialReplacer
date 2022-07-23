@@ -7,18 +7,13 @@ namespace KRT.MaterialReplacer
     /// <summary>
     /// Represents material override setting object.
     /// </summary>
-    [CreateAssetMenu(fileName = "MaterialReplaceMap", menuName = "MaterialReplacer/Material Replace Map")]
-    public class MaterialReplaceMap : ScriptableObject, ISerializationCallbackReceiver
+    [CreateAssetMenu(fileName = "MaterialReplacerRule", menuName = "Material Replacer/Material Replacer Rule")]
+    public class MaterialReplacerRule : ScriptableObject, ISerializationCallbackReceiver
     {
         private Dictionary<Material, Material> m_Materials = new Dictionary<Material, Material>();
 
         [SerializeField]
         private SerializablePair[] m_SerializedMaterials;
-
-        /// <summary>
-        /// Gets the count of replace pairs.
-        /// </summary>
-        public int overridesCount => m_Materials.Count;
 
         /// <summary>
         /// Returns the replaced material.

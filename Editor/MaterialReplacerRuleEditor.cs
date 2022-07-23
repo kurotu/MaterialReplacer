@@ -7,10 +7,10 @@ using UnityEngine;
 namespace KRT.MaterialReplacer
 {
     /// <summary>
-    /// Inspector for MaterialReplaceMap.
+    /// Inspector for MaterialReplacerRule.
     /// </summary>
-    [CustomEditor(typeof(MaterialReplaceMap))]
-    internal class MaterialReplaceMapEditor : Editor
+    [CustomEditor(typeof(MaterialReplacerRule))]
+    internal class MaterialReplacerRuleEditor : Editor
     {
         private const int FIELD_MARGIN = 2;
         private const string PROPERTY_SERIALIZED_MATERIALS = "m_SerializedMaterials";

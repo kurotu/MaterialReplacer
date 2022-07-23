@@ -6,14 +6,14 @@ using UnityEngine;
 namespace KRT.MaterialReplacer
 {
     /// <summary>
-    /// Window to apply material replace map to renderers.
+    /// Window to apply MaterialReplacerRule to renderers.
     /// </summary>
     internal class MaterialReplacerWindow : EditorWindow
     {
         [SerializeField]
         private GameObject targetObject;
         [SerializeField]
-        private MaterialReplaceMap materialReplaceMap;
+        private MaterialReplacerRule materialReplacerRule;
 
         private List<KeyValuePair<Material, Material>> replaces = new List<KeyValuePair<Material, Material>>();
 
@@ -60,16 +60,16 @@ namespace KRT.MaterialReplacer
             }
 
             targetObject = (GameObject)EditorGUILayout.ObjectField("Game Object", targetObject, typeof(GameObject), true);
-            materialReplaceMap = (MaterialReplaceMap)EditorGUILayout.ObjectField("Material Replace Map", materialReplaceMap, typeof(MaterialReplaceMap), false);
+            materialReplacerRule = (MaterialReplacerRule)EditorGUILayout.ObjectField("Material Replacer Rule", materialReplacerRule, typeof(MaterialReplacerRule), false);
 
-            if (targetObject && materialReplaceMap)
+            if (targetObject && materialReplacerRule)
             {
                 var targetMaterials = targetObject.GetComponentsInChildren<Renderer>(true)
                     .SelectMany(r => r.sharedMaterials)
                     .Where(m => m != null)
                     .Distinct()
                     .ToArray();
-                materialReplaceMap.GetPairs(replaces);
+                materialReplacerRule.GetPairs(replaces);
                 var show = replaces.Where(pair => targetMaterials.Contains(pair.Key) && pair.Value != null).ToArray();
                 if (show.Length > 0)
                 {
@@ -87,7 +87,7 @@ namespace KRT.MaterialReplacer
 
             EditorGUILayout.Space();
 
-            using (var disbled = new EditorGUI.DisabledGroupScope(targetObject == null || materialReplaceMap == null))
+            using (var disbled = new EditorGUI.DisabledGroupScope(targetObject == null || materialReplacerRule == null))
             {
                 if (GUILayout.Button("Apply"))
                 {
@@ -109,11 +109,11 @@ namespace KRT.MaterialReplacer
                     {
                         return null;
                     }
-                    if (!materialReplaceMap.ContainsKey(m))
+                    if (!materialReplacerRule.ContainsKey(m))
                     {
                         return m;
                     }
-                    var resolved = materialReplaceMap[m];
+                    var resolved = materialReplacerRule[m];
                     if (resolved)
                     {
                         return resolved;
