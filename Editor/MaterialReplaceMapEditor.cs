@@ -10,7 +10,7 @@ namespace KRT.MaterialReplacer
     /// Inspector for MaterialReplaceMap.
     /// </summary>
     [CustomEditor(typeof(MaterialReplaceMap))]
-    public class MaterialReplaceMapEditor : Editor
+    internal class MaterialReplaceMapEditor : Editor
     {
         private const int FIELD_MARGIN = 2;
         private const string PROPERTY_SERIALIZED_MATERIALS = "m_SerializedMaterials";
