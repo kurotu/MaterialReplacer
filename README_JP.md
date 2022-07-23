@@ -8,6 +8,9 @@
 
 ルールに基づいてマテリアルを一括で置換する Unity Editor 拡張です。
 
+マテリアルを一つ一つ手作業で置き換える手間をなくし、ボタン一つで適用できるようになります。
+衣装改変済みのアバターに自身の作成済みマテリアルを適用するときなどに便利です。
+
 VRChat などのサービスでの使用を想定して作成していますが、自由に使用できます。
 
 ## 対応状況
@@ -30,7 +33,7 @@ VRChat などのサービスでの使用を想定して作成していますが�
 2. 作成された `MaterialReplacerRule.asset` を選択します。
 3. Inspector で `Original` と `Replaced` にマテリアルを設定します。
     - Original: 置き換え対象のマテリアル
-    - Replaced: 適用されるマテリアル
+    - Replaced: Original の代わりに適用するマテリアル (設定しない場合は Original のまま)
     > ℹ️ `Reference Object` に GameObject を設定して `Add to Original Materials` を押すこともできます。一つ一つマテリアルを追加するよりも簡単です。
 
 ### GameObject にマテリアルを適用する

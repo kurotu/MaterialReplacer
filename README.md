@@ -8,6 +8,9 @@
 
 Unity editor extension to replace materials at once by defining replacement rules.
 
+This save the hassle of manually changing materials one by one.
+It would be useful when applying your own materials to dressed avatars.
+
 This extension is designed for services such as VRChat, but it's usable for any purpose.
 
 ## Support
@@ -30,7 +33,7 @@ There are two options to import the package into your project.
 2. Select the created `MaterialReplacerRule.asset`.
 3. Add `Original` and `Replaced` materials in an inspector.
     - Original: Materials which will be replaced.
-    - Replaced: Materials which will be applied.
+    - Replaced: Materials which will be applied instead of `Original` (When it's None, `Original` will be kept).
     > ℹ️ You can set `Reference Object` then press `Add to Original Materials`. It's easier than adding original materials one by one.
 
 ### Apply materials to a GameObject.
