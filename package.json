@@ -1,6 +1,6 @@
 {
     "name": "com.github.kurotu.material-replacer",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "displayName": "MaterialReplacer",
     "description": "Editor extension to replace materials at once",
     "unity": "2019.4",
