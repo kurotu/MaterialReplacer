@@ -102,7 +102,7 @@ namespace KRT.MaterialReplacer
             for (var rendererIndex = 0; rendererIndex < renderers.Length; rendererIndex++)
             {
                 var renderer = renderers[rendererIndex];
-                Undo.RecordObject(renderer, "Apply Material Override");
+                Undo.RecordObject(renderer, "Apply Material Replacer Rule");
                 renderer.sharedMaterials = renderer.sharedMaterials.Select(m =>
                 {
                     if (m == null)
