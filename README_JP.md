@@ -8,6 +8,8 @@
   <img alt="Release" src="https://img.shields.io/github/v/release/kurotu/MaterialReplacer">
 </a>
 
+[ [English](./README.md) | 日本語 | [デモ (YouTube)](https://youtu.be/cPbJyPUZaqo) ]
+
 ## 概要
 
 ルールに基づいてマテリアルを一括で置換する Unity Editor 拡張です。

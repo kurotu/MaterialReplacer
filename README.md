@@ -8,6 +8,8 @@
   <img alt="Release" src="https://img.shields.io/github/v/release/kurotu/MaterialReplacer">
 </a>
 
+[ English | [日本語](./README_JP.md) | [Demo (YouTube)](https://youtu.be/cPbJyPUZaqo) ]
+
 ## Overview
 
 Unity editor extension to replace materials at once by defining replacement rules.
