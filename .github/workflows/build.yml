@@ -103,8 +103,8 @@ jobs:
           mkdir ${NAME}
           cp MaterialReplacer.unitypackage ${NAME}/${NAME}.unitypackage
           cp LICENSE.txt ${NAME}/
-          cp README.md ${NAME}/
-          cp README_JP.md ${NAME}/
+          cp README*.md ${NAME}/
+          cp CHANGELOG*.md ${NAME}/
           zip -r ${NAME}.zip ${NAME}
           echo "::set-output name=artifact-name::${NAME}"
 
