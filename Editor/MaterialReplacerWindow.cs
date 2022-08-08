@@ -16,8 +16,6 @@ namespace KRT.MaterialReplacer
         private MaterialReplacerRule materialReplacerRule;
         private MaterialReplacerRule adhocRule;
 
-        private List<KeyValuePair<Material, Material>> replaces = new List<KeyValuePair<Material, Material>>();
-
         [MenuItem("Window/Material Replacer")]
         [MenuItem("GameObject/Material Replacer", false, 30)]
         private static void ShowFromMenu()
