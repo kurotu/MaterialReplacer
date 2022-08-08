@@ -20,7 +20,18 @@ namespace KRT.MaterialReplacer
         /// </summary>
         /// <param name="key">Key to search the original material.</param>
         /// <returns>Overriding material.</returns>
-        public Material this[Material key] => m_Materials[key];
+        public Material this[Material key]
+        {
+            get
+            {
+                return m_Materials[key];
+            }
+
+            set
+            {
+                m_Materials[key] = value;
+            }
+        }
 
         /// <summary>
         /// Gets the list of Material pairs.
