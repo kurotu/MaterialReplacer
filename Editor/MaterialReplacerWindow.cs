@@ -148,7 +148,7 @@ namespace KRT.MaterialReplacer
 
             EditorGUILayout.Space();
 
-            using (var disbled = new EditorGUI.DisabledGroupScope(targetObject == null || materialReplacerRule == null))
+            using (new EditorGUI.DisabledGroupScope(targetObject == null))
             {
                 if (GUILayout.Button("Apply"))
                 {
