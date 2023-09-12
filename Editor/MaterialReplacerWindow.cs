@@ -15,6 +15,7 @@ namespace KRT.MaterialReplacer
         [SerializeField]
         private MaterialReplacerRule materialReplacerRule;
         private MaterialReplacerRule adhocRule;
+        private Vector2 scrollPosition;
 
         [MenuItem("Window/Material Replacer")]
         [MenuItem("GameObject/Material Replacer", false, 30)]
@@ -111,38 +112,43 @@ namespace KRT.MaterialReplacer
                         }
                         EditorGUILayout.LabelField("Ad Hoc Rule");
                     }
-                    var defaultBackground = GUI.backgroundColor;
-                    var defaultContent = GUI.contentColor;
-                    var activeColor = Color.green;
-                    for (var i = 0; i < targetMaterials.Length; i++)
+
+                    using (var scroll = new EditorGUILayout.ScrollViewScope(scrollPosition))
                     {
-                        var resolved = resolvedRule[targetMaterials[i]];
-                        if (resolved == null)
+                        var defaultBackground = GUI.backgroundColor;
+                        var defaultContent = GUI.contentColor;
+                        var activeColor = Color.green;
+                        for (var i = 0; i < targetMaterials.Length; i++)
                         {
-                            resolved = targetMaterials[i];
-                        }
-                        using (var box = new EditorGUILayout.HorizontalScope())
-                        {
-                            using (new EditorGUI.DisabledScope(true))
+                            var resolved = resolvedRule[targetMaterials[i]];
+                            if (resolved == null)
                             {
-                                GUI.backgroundColor = resolved == targetMaterials[i] ? activeColor : defaultBackground;
-                                GUI.contentColor = GUI.backgroundColor;
-                                EditorGUILayout.ObjectField(targetMaterials[i], typeof(Material), false);
-                                if (materialReplacerRule)
-                                {
-                                    GUI.backgroundColor = resolved == baseResults[i] ? activeColor : defaultBackground;
-                                    GUI.contentColor = GUI.backgroundColor;
-                                    EditorGUILayout.ObjectField(baseResults[i], typeof(Material), false);
-                                }
+                                resolved = targetMaterials[i];
                             }
-                            MaterialReplacer.Logger.Log(resolved);
-                            GUI.backgroundColor = resolved == adhocResults[i] ? activeColor : defaultBackground;
-                            GUI.contentColor = GUI.backgroundColor;
-                            adhocRule[targetMaterials[i]] = (Material)EditorGUILayout.ObjectField(adhocResults[i], typeof(Material), false);
+                            using (var box = new EditorGUILayout.HorizontalScope())
+                            {
+                                using (new EditorGUI.DisabledScope(true))
+                                {
+                                    GUI.backgroundColor = resolved == targetMaterials[i] ? activeColor : defaultBackground;
+                                    GUI.contentColor = GUI.backgroundColor;
+                                    EditorGUILayout.ObjectField(targetMaterials[i], typeof(Material), false);
+                                    if (materialReplacerRule)
+                                    {
+                                        GUI.backgroundColor = resolved == baseResults[i] ? activeColor : defaultBackground;
+                                        GUI.contentColor = GUI.backgroundColor;
+                                        EditorGUILayout.ObjectField(baseResults[i], typeof(Material), false);
+                                    }
+                                }
+                                MaterialReplacer.Logger.Log(resolved);
+                                GUI.backgroundColor = resolved == adhocResults[i] ? activeColor : defaultBackground;
+                                GUI.contentColor = GUI.backgroundColor;
+                                adhocRule[targetMaterials[i]] = (Material)EditorGUILayout.ObjectField(adhocResults[i], typeof(Material), false);
+                            }
                         }
+                        GUI.contentColor = defaultContent;
+                        GUI.backgroundColor = defaultBackground;
+                        scrollPosition = scroll.scrollPosition;
                     }
-                    GUI.contentColor = defaultContent;
-                    GUI.backgroundColor = defaultBackground;
                 }
             }
 
