@@ -15,7 +15,7 @@ namespace KRT.MaterialReplacer
         /// <summary>
         /// Version of MaterialReplacer.
         /// </summary>
-        public static readonly string Version = "1.1.1";
+        public static readonly string Version = "1.2.0";
 
         /// <summary>
         /// URL for booth.pm.
