@@ -58,4 +58,4 @@ MIT License
 
 - VRCID: kurotu
 - Twitter: [@kurotu](https://twitter.com/kurotu)
-- GitHub: [kurotu/VRCQuestTools](https://github.com/kurotu/VRCQuestTools)
+- GitHub: [kurotu/MaterialReplacer](https://github.com/kurotu/MaterialReplacer)
