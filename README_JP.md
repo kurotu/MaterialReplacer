@@ -1,5 +1,9 @@
 # Material Replacer
 
+> ![CAUTION]
+> このパッケージは廃止されました。
+> 後継パッケージ [KRT Material Tools](https://github.com/kurotu/krt-material-tools) を使用してください。
+
 <a href="https://kurotu.booth.pm/items/4023240">
   <img alt="Booth" src="https://asset.booth.pm/static-images/banner/200x40_01.png">
 </a>
